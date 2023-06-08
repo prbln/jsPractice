@@ -1,20 +1,20 @@
+const generateRandomValue = () => Math.floor(Math.random() * 20) + 1;
 let randowmGuess = generateRandomValue();
-function generateRandomValue() {
-  return Math.floor(Math.random() * 20) + 1;
-}
-function setMessageContent(value) {
+const setMessageContent = value => {
   userScore.textContent = value;
-}
-function setDisplayMessage(text) {
+};
+
+const setDisplayMessage = text => {
   displayMessage.textContent = text;
-}
-function newHighScore(userPoints) {
+};
+
+const newHighScore = userPoints => {
   let highScore = document.querySelector('.highscore');
   if (userPoints > Number(highScore.textContent)) {
     highScore.textContent = userPoints;
   }
-}
-function onClickCheck() {
+};
+const onClickCheck = () => {
   userPoints = Number(userScore.textContent);
   if (randowmGuess > userGuess.value) {
     setDisplayMessage('Too Low');
@@ -27,15 +27,15 @@ function onClickCheck() {
     newHighScore(userPoints);
     document.querySelector('.btn.check').disabled = true;
   }
-}
-function onClickAgain() {
+};
+const onClickAgain = () => {
   randowmGuess = generateRandomValue();
   console.log(randowmGuess);
   userScore.textContent = 20;
   setDisplayMessage('Start Guessing');
   userGuess.value = '';
   document.querySelector('.btn.check').disabled = false;
-}
+};
 
 //Varibles
 const userScore = document.querySelector('.score');
@@ -48,4 +48,3 @@ checkButton.addEventListener('click', onClickCheck);
 
 const playAgainBtn = document.querySelector('.btn.again');
 playAgainBtn.addEventListener('click', onClickAgain);
-
